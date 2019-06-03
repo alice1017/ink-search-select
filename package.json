@@ -9,7 +9,8 @@
     "license": "MIT",
     "main": "index.js",
     "scripts": {
-        "build": "babel src --out-dir dist"
+        "build": "babel src --out-dir dist",
+        "eval": "babel src --out-dir dist && node dist"
     },
     "keywords": [
         "ink",
