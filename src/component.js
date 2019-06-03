@@ -65,12 +65,11 @@ export default class SearchSelect extends PureComponent {
         const {
             label,
             desc,
-            items,
             itemComponent,
             onSelect,
             placeholder
         } = this.props;
-        const { searchQuery, find } = this.state;
+        const { searchQuery, find, foundItems } = this.state;
 
         return (
             <Box flexDirection="column">
@@ -86,7 +85,7 @@ export default class SearchSelect extends PureComponent {
                     <Selector
                         find={find}
                         desc={desc}
-                        items={items}
+                        items={foundItems}
                         itemComponent={itemComponent}
                         onSelect={onSelect}
                     />
@@ -95,12 +94,37 @@ export default class SearchSelect extends PureComponent {
         );
     }
 
-    async handleChange(searchQuery) {
-        // todo: impelement SEARCH behavior
+    async search(query) {
+        const { items } = this.props;
 
-        await this.setState({searchQuery});
+        if (query.length === 0) {
+            return [];
+        }
+
+        const itemKeys = await items.map(item => item.label);
+        const foundKeys = await itemKeys.filter(key => {
+            const length = query.length;
+            return (
+                key.slice(0, length) === query.slice(0, length)
+            );
+        });
+
+        return await foundKeys.map(key => {
+            const item = items.filter(item => item.label === key);
+            return {
+                label: key,
+                value: item[0].value
+            };
+        });
+    }
+
+    async handleChange(searchQuery) {
+        const foundItems = await this.search(searchQuery);
+
         await this.setState({
-            find: NOT_FOUND // todo: implement FOUND behavior
+            searchQuery: searchQuery,
+            find: (foundItems.length > 0) ? FOUND : NOT_FOUND,
+            foundItems: foundItems
         });
     }
 }
