@@ -1,19 +1,40 @@
 import React, { PureComponent } from 'react';
 import PropTypes from "prop-types";
-import {render, Box, Color, Text} from 'ink';
+import {Box, Color, Text} from 'ink';
 import SelectInput, { Item } from 'ink-select-input';
 import TextInput from "ink-text-input";
 
 // * Flags
-const FOCUSED = true;
-const NOT_FOCUSED = false;
+const FOUND = true;
+const NOT_FOUND = false;
+
+// * Helper Components
+const Selector = ({ find, items, itemComponent, onSelect}) => {
+    if (find === FOUND) {
+        return (
+            <Box>
+                <SelectInput
+                    items={items}
+                    itemComponent={itemComponent}
+                    onSelect={onSelect}
+                />
+            </Box>
+        );
+    }
+    else if (find === NOT_FOUND) {
+        return (
+            <Color gray>
+                {"SPIN SEARCHING SPINNER"}
+            </Color>
+        );
+    }
+};
 
 export default class SearchSelect extends PureComponent {
 
     static propTypes = {
         label: PropTypes.string,
         items: PropTypes.array,
-        focused: PropTypes.bool,
         itemComponent: PropTypes.func,
         onSelect: PropTypes.func,
         placeholder: PropTypes.string
@@ -22,7 +43,6 @@ export default class SearchSelect extends PureComponent {
     static defaultprops = {
         label: "Search query: ",
         items: [],
-        focused: NOT_FOCUSED,
         itemComponent: Item,
         onSelect: () => {},
         placeholder: "..."
@@ -30,8 +50,8 @@ export default class SearchSelect extends PureComponent {
 
     state = {
         searchQuery: "",
-        searchedItems: [],
-        focused: null
+        foundItems: [],
+        find: NOT_FOUND
     };
 
     constructor(props) {
@@ -40,22 +60,43 @@ export default class SearchSelect extends PureComponent {
     }
 
     render() {
-        const { label, placeholder } = this.props;
-        const { searchQuery } = this.state;
+        const {
+            label,
+            items,
+            itemComponent,
+            onSelect,
+            placeholder
+        } = this.props;
+        const { searchQuery, find } = this.state;
 
         return (
-            <Box flexDirection="row">
-                <Text>{label}</Text>
-                <TextInput
-                    value={searchQuery}
-                    onChange={this.handleChange}
-                    placeholder={placeholder}
-                />
+            <Box flexDirection="column">
+                <Box flexDirection="row">
+                    <Text>{label}</Text>
+                    <TextInput
+                        value={searchQuery}
+                        onChange={this.handleChange}
+                        placeholder={placeholder}
+                    />
+                </Box>
+                <Box>
+                    <Selector
+                        find={find}
+                        items={items}
+                        itemComponent={itemComponent}
+                        onSelect={onSelect}
+                    />
+                </Box>
             </Box>
         );
     }
 
     async handleChange(searchQuery) {
-        this.setState({searchQuery});
+        // todo: impelement SEARCH behavior
+
+        await this.setState({searchQuery});
+        await this.setState({
+            find: NOT_FOUND // todo: implement FOUND behavior
+        });
     }
 }
