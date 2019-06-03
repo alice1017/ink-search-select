@@ -12,13 +12,15 @@
         "build": "babel src --out-dir dist"
     },
     "keywords": [
-        "ink", "ink-component"
+        "ink",
+        "ink-component"
     ],
     "dependencies": {
         "ink": "^2.1.1",
         "ink-select-input": "^3.1.1",
         "ink-spinner": "^3.0.1",
         "ink-text-input": "^3.1.1",
+        "prop-types": "^15.7.2",
         "react": "^16.8.6"
     },
     "devDependencies": {
@@ -26,8 +28,8 @@
         "@babel/core": "^7.4.4",
         "@babel/preset-env": "^7.4.4",
         "@babel/preset-react": "^7.0.0",
-        "eslint": "^5.16.0",
         "babel-eslint": "^10.0.1",
+        "eslint": "^5.16.0",
         "ink-testing-library": "^1.0.1"
     },
     "peerDependencies": {
