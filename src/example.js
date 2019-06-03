@@ -1,4 +1,4 @@
-import SearchSelect from "./component";
+import SearchSelect from "../src/";
 import React from 'react';
 import { render } from 'ink';
 
