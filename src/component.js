@@ -9,7 +9,7 @@ const FOUND = true;
 const NOT_FOUND = false;
 
 // * Helper Components
-const Selector = ({ find, items, itemComponent, onSelect}) => {
+const Selector = ({ find, desc, items, itemComponent, onSelect}) => {
     if (find === FOUND) {
         return (
             <Box>
@@ -24,7 +24,7 @@ const Selector = ({ find, items, itemComponent, onSelect}) => {
     else if (find === NOT_FOUND) {
         return (
             <Color gray>
-                {"SPIN SEARCHING SPINNER"}
+                <Text>{desc}</Text>
             </Color>
         );
     }
@@ -34,14 +34,16 @@ export default class SearchSelect extends PureComponent {
 
     static propTypes = {
         label: PropTypes.string,
+        desc: PropTypes.string,
         items: PropTypes.array,
         itemComponent: PropTypes.func,
         onSelect: PropTypes.func,
         placeholder: PropTypes.string
     };
 
-    static defaultprops = {
+    static defaultProps = {
         label: "Search query: ",
+        desc: "Search anything",
         items: [],
         itemComponent: Item,
         onSelect: () => {},
@@ -62,6 +64,7 @@ export default class SearchSelect extends PureComponent {
     render() {
         const {
             label,
+            desc,
             items,
             itemComponent,
             onSelect,
@@ -82,6 +85,7 @@ export default class SearchSelect extends PureComponent {
                 <Box>
                     <Selector
                         find={find}
+                        desc={desc}
                         items={items}
                         itemComponent={itemComponent}
                         onSelect={onSelect}
