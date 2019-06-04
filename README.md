@@ -5,7 +5,7 @@
 
 > incremental search and select component for [ink](https://github.com/vadimdemedes/ink)
 
-![DEMO](./media/demo.gif)
+![DEMO](https://user-images.githubusercontent.com/465679/58859157-21d84d80-86e4-11e9-80a8-c75a60e7dc98.gif)
 
 ## Usage
 
@@ -47,9 +47,14 @@ app = render(
 
 ## Installation
 
+```code
+npm install ink-search-select
 ```
-$ npm install ink-search-select
-$ yarn add ink-search-select
+
+or
+
+```code
+yarn add ink-search-select
 ```
 
 ## Props
