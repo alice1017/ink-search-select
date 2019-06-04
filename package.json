@@ -12,7 +12,8 @@
         "node": ">=11"
     },
     "files": [
-        "dist"
+        "dist",
+        "media"
     ],
     "scripts": {
         "build": "babel src --out-dir dist",
