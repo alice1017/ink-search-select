@@ -1,5 +1,8 @@
 # ink-search-select
 
+![mpm](https://img.shields.io/npm/v/ink-search-select.svg)
+![node](https://img.shields.io/node/v/ink-search-select.svg)
+
 > incremental search and select component for [ink](https://github.com/vadimdemedes/ink)
 
 ![DEMO](./media/demo.gif)
@@ -41,6 +44,13 @@ app = render(
 * **[ink](https://github.com/vadimdemedes/ink)** : `^2.1.1`,
 * **[ink-select-input](https://github.com/vadimdemedes/ink-select-input)** : `^3.1.1`,
 * **[ink-text-input](https://github.com/vadimdemedes/ink-text-input)** : `^3.1.1`
+
+## Installation
+
+```
+$ npm install ink-search-select
+$ yarn add ink-search-select
+```
 
 ## Props
 
