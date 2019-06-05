@@ -1,7 +1,7 @@
 # ink-search-select
 
-![mpm](https://img.shields.io/npm/v/ink-search-select.svg)
-![node](https://img.shields.io/node/v/ink-search-select.svg)
+![mpm](https://img.shields.io/npm/v/ink-search-select.svg?style=flat)
+![node](https://img.shields.io/node/v/ink-search-select.svg?style=flat)
 
 > incremental search and select component for [ink](https://github.com/vadimdemedes/ink)
 
