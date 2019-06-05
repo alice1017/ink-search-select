@@ -5,7 +5,8 @@
 
 > incremental search and select component for [ink](https://github.com/vadimdemedes/ink)
 
-![DEMO](https://user-images.githubusercontent.com/465679/58859157-21d84d80-86e4-11e9-80a8-c75a60e7dc98.gif)
+![DEMO](https://raw.githubusercontent.com/alice1017/ink-search-select/master/media/demo.gif)
+
 
 ## Usage
 
